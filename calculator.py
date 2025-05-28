@@ -66,10 +66,15 @@ def calculadora():
             resultado = formatear_numero(num1 / num2)
             mostrar_resultado(n1,n2,'/',resultado)
 
-        continuar = input(Fore.CYAN + "\n¿Deseas realizar otra operación? (s/n): ").strip().lower()
-        if continuar != 's':
-            print(Fore.MAGENTA + "¡Hasta luego!")
-            break
+        while True:
+            continuar = input(Fore.CYAN + "\n¿Deseas realizar otra operación? (s/n): ").strip().lower()
+            if continuar == 's':
+                break
+            elif continuar == 'n':
+                print(Fore.MAGENTA + "¡Hasta luego!")
+                return  # Sale de la función `calculadora`
+            else:
+                print(Fore.RED + "Opción inválida. Por favor ingresa 's' para sí o 'n' para no.")
 
 # Llamada a la funcion principal
 calculadora()
