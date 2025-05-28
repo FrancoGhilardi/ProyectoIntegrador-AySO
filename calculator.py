@@ -6,11 +6,11 @@ init(autoreset=True)
 # Función para mostrar el menú
 def mostrar_menu():
     print(Fore.CYAN + "\n=== Calculadora Básica ===")
-    print("1. Sumar")
-    print("2. Restar")
-    print("3. Multiplicar")
-    print("4. Dividir")
-    print("5. Salir")
+    print("[ 1 ] - Sumar")
+    print("[ 2 ] - Restar")
+    print("[ 3 ] - Multiplicar")
+    print("[ 4 ] - Dividir")
+    print("[ 5 ] - Salir")
 
 # Función para pedir números al usuario
 def pedir_numero(mensaje):
@@ -24,6 +24,10 @@ def pedir_numero(mensaje):
 # Función para mostrar los números como enteros si es posible
 def formatear_numero(n):
     return int(n) if n == int(n) else n
+
+# Funcion para mostrar la respuesta de la operacion matemática
+def mostrar_resultado(num1,num2,operacion,resultado):
+    return print(Fore.BLUE + f"Resultado: {num1} {operacion} {num2} = {resultado}")
 
 # Función principal
 def calculadora():
@@ -48,19 +52,19 @@ def calculadora():
 
         if opcion == '1':
             resultado = formatear_numero(num1 + num2)
-            print(Fore.BLUE + f"Resultado: {n1} + {n2} = {resultado}")
+            mostrar_resultado(n1,n2,'+',resultado)
         elif opcion == '2':
             resultado = formatear_numero(num1 - num2)
-            print(Fore.BLUE + f"Resultado: {n1} - {n2} = {resultado}")
+            mostrar_resultado(n1,n2,'-',resultado)
         elif opcion == '3':
             resultado = formatear_numero(num1 * num2)
-            print(Fore.BLUE + f"Resultado: {n1} * {n2} = {resultado}")
+            mostrar_resultado(n1,n2,'*',resultado)
         elif opcion == '4':
             if num2 == 0:
                 print(Fore.RED + "Error: no se puede dividir por cero.")
                 continue
             resultado = formatear_numero(num1 / num2)
-            print(Fore.BLUE + f"Resultado: {n1} / {n2} = {resultado}")
+            mostrar_resultado(n1,n2,'/',resultado)
 
         continuar = input(Fore.CYAN + "\n¿Deseas realizar otra operación? (s/n): ").strip().lower()
         if continuar != 's':
